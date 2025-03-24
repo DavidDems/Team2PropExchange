@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\UserController;
 
@@ -17,11 +17,19 @@ Route::get('/search-map', function () {
     return view('search-map');
 })->name('search.map');
 
-Route::get('/login', function() {
+Route::get('/add-property', function () {
+    return view('add-property');
+})->name('add.property');
+
+Route::post('/add-property', [PropertyController::class, 'store'])->name('properties.store');
+
+
+
+Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/register', function() {
+Route::get('/register', function () {
     return view('register');
 });
 
