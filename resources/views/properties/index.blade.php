@@ -7,11 +7,9 @@
 
   <!-- View Map Button -->
   <div class="text-end mt-2">
-    <a href="{{ route('search.map') }}" class="btn btn-outline-primary">
+    <a href="{{ route('properties.map') }}" class="btn btn-outline-primary">
       <i class="bi bi-map"></i> View Map
     </a>
   </div>
   <div>
-
-
     @endsection

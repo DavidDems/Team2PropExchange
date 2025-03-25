@@ -9,20 +9,19 @@ Route::get('/', function () {
 });
 
 
-Route::get('/search-properties', function () {
-    return view('search-properties');
-})->name('search.properties');
+Route::get('/properties', function () {
+    return view('properties.index');
+})->name('properties.index');
 
-Route::get('/search-map', function () {
-    return view('search-map');
-})->name('search.map');
+Route::get('/properties/create', function () {
+    return view('properties.create');
+})->name('properties.create');
 
-Route::get('/add-property', function () {
-    return view('add-property');
-})->name('add.property');
+Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
 
-Route::post('/add-property', [PropertyController::class, 'store'])->name('properties.store');
-
+Route::get('/properties-map', function () {
+    return view('properties.map');
+})->name('properties.map');
 
 
 Route::get('/login', function () {
@@ -57,8 +56,8 @@ Route::get('/users/username/{username}', [UserController::class, 'getByUsername'
 
 
 // Property routes
-Route::post('/properties', [PropertyController::class, 'store']);
-Route::put('/properties/{propertyId}', [PropertyController::class, 'update']);
-Route::delete('/properties/{propertyId}', [PropertyController::class, 'destroy']);
-Route::get('/properties/{propertyId}', [PropertyController::class, 'show']);
-Route::get('/properties ', [PropertyController::class, 'index']);
+// Route::post('/properties', [PropertyController::class, 'store']);
+// Route::put('/properties/{propertyId}', [PropertyController::class, 'update']);
+// Route::delete('/properties/{propertyId}', [PropertyController::class, 'destroy']);
+// Route::get('/properties/{propertyId}', [PropertyController::class, 'show']);
+// Route::get('/properties ', [PropertyController::class, 'index']);

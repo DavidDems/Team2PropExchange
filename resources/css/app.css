@@ -1,7 +1,5 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "bootstrap/dist/css/bootstrap.min.css";
-
-
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -9,22 +7,23 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
 
 /* Azure: #007FFF */
 
 .navbar {
-    background-color: #DD1D2E;
+    background-color: #dd1d2e;
 }
 
 .footer {
-    background-color: #DD1D2E;
+    background-color: #dd1d2e;
 }
 
 .hero {
-    background-color: #003DA5;
+    background-color: #003da5;
 }
 
 .info-section h2 {
@@ -36,11 +35,11 @@
 }
 
 .property-cards {
-    background-color: #003DA5;
+    background-color: #003da5;
 }
 
 .property-cards a {
-    background-color: #003DA5;
+    background-color: #003da5;
     color: white;
     transition: ease 0.3s;
 }

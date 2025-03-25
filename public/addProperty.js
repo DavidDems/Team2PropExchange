@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("error-title").innerText =
                 "Title must be at least 3 characters.";
             valid = false;
-            console.log("invalid title", title);
         }
 
         if (isNaN(price) || price <= 0) {
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (!valid) {
-            e.preventDefault(); // Stop form submission
+            e.preventDefault();
         } else {
             e.preventDefault();
             const toastElement = document.getElementById("successToast");

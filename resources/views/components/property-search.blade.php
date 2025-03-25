@@ -1,4 +1,4 @@
-<form method="GET" action="{{route('search.properties')}}" class="row g-3 align-items-end bg-light p-4 rounded shadow">
+<form method="GET" action="{{route('properties.index')}}" class="row g-3 align-items-end bg-light p-4 rounded shadow">
   <div class="col-md-3">
     <input type="text" name="city" class="form-control" placeholder="City">
   </div>
@@ -9,8 +9,8 @@
       <option value="">Type</option>
       <option value="House">House</option>
       <option value="Condo">Condo</option>
-      <option value="Cottage">Condo</option>
-      <option value="Multiplex">Condo</option>
+      <option value="Cottage">Cottage</option>
+      <option value="Multiplex">Myltiplex</option>
     </select>
   </div>
 
@@ -26,7 +26,7 @@
 
   <!-- Bathrooms -->
   <div class="col-md-2">
-    <select name="bthrooms" class="form-select">
+    <select name="bathrooms" class="form-select">
       <option value="">Bathrooms</option>
       @for($i =1; $i <= 5; $i++)
         <option value="{{$i}}">{{$i}}+</option>
