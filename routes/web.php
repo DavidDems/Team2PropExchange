@@ -3,15 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\UserController;
+use App\Models\Property;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/properties', function () {
-    return view('properties.index');
-})->name('properties.index');
+Route::get('/properties', [PropertyController::class, 'index'])->name('properties.index');
 
 Route::get('/properties/create', function () {
     return view('properties.create');
@@ -19,8 +17,13 @@ Route::get('/properties/create', function () {
 
 Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
 
+// Route::get('/properties-map', function () {
+//     return view('properties.map');
+// })->name('properties.map');
+
 Route::get('/properties-map', function () {
-    return view('properties.map');
+    $properties = Property::all();
+    return view('properties.map', compact('properties'));
 })->name('properties.map');
 
 

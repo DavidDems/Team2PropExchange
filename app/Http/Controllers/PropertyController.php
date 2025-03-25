@@ -7,11 +7,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
-class PropertyController extends Controller {
+class PropertyController extends Controller
+{
     // create, update and delete methods
     // Create a property
-    public function store(Request $request) {
-        try {    
+    public function store(Request $request)
+    {
+        try {
             $validatedData = $request->validate([
                 'title' => 'required|string|regex:/^[a-zA-Z0-9! -]{1,255}$/',
                 'description' => 'required|string|regex:/^[a-zA-Z0-9.!@ -]+$/',
@@ -39,18 +41,18 @@ class PropertyController extends Controller {
                 'errors' => $error->errors(),
             ], 422);
         }
-    
-        try { 
+
+        try {
             $property = Property::create($validatedData);
             return response()->json($property, 201);
-
         } catch (\Exception $error) {
             return response()->json(['message' => 'An unexpected error occurred: ' . $error->getMessage()], 500);
         }
     }
 
     // Update a property
-    public function update(Request $request, $propertyId) {
+    public function update(Request $request, $propertyId)
+    {
         try {
             $property = Property::find($propertyId);
         } catch (\Exception $error) {
@@ -99,7 +101,8 @@ class PropertyController extends Controller {
     }
 
     // Delete a property
-    public function destroy($propertyId) {
+    public function destroy($propertyId)
+    {
         try {
             $property = Property::find($propertyId);
         } catch (\Exception $error) {
@@ -121,7 +124,8 @@ class PropertyController extends Controller {
 
     // Get methods
     // Get Property by owner id
-    public function getByOwner($ownerId) {
+    public function getByOwner($ownerId)
+    {
         try {
             $validUser = User::find($ownerId);
             if (!$validUser) {
@@ -138,7 +142,8 @@ class PropertyController extends Controller {
     }
 
     // Get property by agent id
-    public function getByAgent($agentId) {
+    public function getByAgent($agentId)
+    {
         try {
             $validUser = User::find($agentId);
             if (!$validUser) {
@@ -155,7 +160,8 @@ class PropertyController extends Controller {
     }
 
     // Get property by id
-    public function show($propertyId) {
+    public function show($propertyId)
+    {
         try {
             $property = Property::find($propertyId);
         } catch (\Exception $error) {
@@ -169,14 +175,25 @@ class PropertyController extends Controller {
         return response()->json($property);
     }
 
-    // Get all properties
-    public function index() {
+    // // Get all properties
+    // public function index()
+    // {
+    //     try {
+    //         $properties = Property::all();
+    //     } catch (\Exception $error) {
+    //         return response()->json(['message' => 'An unexpected error occurred: ' . $error->getMessage()], 500);
+    //     }
+
+    //     return response()->json($properties);
+    // }
+
+    public function index()
+    {
         try {
             $properties = Property::all();
+            return view('properties.index', compact('properties'));
         } catch (\Exception $error) {
-            return response()->json(['message' => 'An unexpected error occurred: ' . $error->getMessage()], 500);
+            return back()->with('error', 'An unexpected error occurred: ' . $error->getMessage());
         }
-
-        return response()->json($properties);
     }
 }

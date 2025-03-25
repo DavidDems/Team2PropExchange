@@ -11,5 +11,15 @@
       <i class="bi bi-map"></i> View Map
     </a>
   </div>
+
+  @foreach($properties as $property)
+  <div class="card">
+    <div class="card-title">
+      <h2>{{$property['title']}}</h2>
+      <p>{{$property['description']}}</p>
+      <a href="{{$property['id']}}">View Property</a>
+    </div>
+  </div>
+  @endforeach
   <div>
     @endsection
