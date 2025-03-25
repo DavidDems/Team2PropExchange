@@ -17,9 +17,7 @@ Route::get('/properties/create', function () {
 
 Route::post('/properties', [PropertyController::class, 'store'])->name('properties.store');
 
-// Route::get('/properties-map', function () {
-//     return view('properties.map');
-// })->name('properties.map');
+
 
 Route::get('/properties-map', function () {
     $properties = Property::all();
