@@ -30,8 +30,6 @@
   <!-- Map Section -->
   <div id="map" style="height: 500px; width: 100%;"></div>
 </div>
-</div>
-
 <script>
   const properties = @json($properties);
 
@@ -42,6 +40,7 @@
         lat: 45.4215,
         lng: -75.6993
       },
+
     });
 
     properties.forEach(property => {
@@ -55,7 +54,12 @@
       });
 
       const infoWindow = new google.maps.InfoWindow({
-        content: `<strong>${property.title}</strong><br>${property.propertyType}<br>$${property.price}`
+        content: `
+          <div style="font-family: Arial; font-size: 14px;">
+            <strong>${property.title}</strong><br>
+            Type: ${property.propertyType}<br>
+            Price: $${Number(property.price).toLocaleString()}
+          </div>`
       });
 
       marker.addListener('click', () => {
@@ -67,5 +71,7 @@
 
 
 <!-- Load Google Maps API -->
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSoL_nhXPC7ACkJCDxqNdyWRYwIcEeBtI&callback=initMap"></script>
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.key') }}&callback=initMap">
+</script>
 @endsection

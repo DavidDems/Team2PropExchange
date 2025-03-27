@@ -26,7 +26,6 @@ Route::get('/register', function () {
     return view('register');
 })->name('register');
 
-
 Route::get('/search-properties', [PropertyController::class, 'search'])->name('search-properties');
 Route::get('/map-properties', [PropertyController::class, 'mapView'])->name('map-properties');
 Route::get('/properties/{property}', [PropertyController::class, 'show'])->name('properties.show');

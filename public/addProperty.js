@@ -34,6 +34,21 @@ document.addEventListener("DOMContentLoaded", function () {
             valid = false;
         }
 
+        const lat = parseFloat(form.elements["latitude"].value);
+        const lng = parseFloat(form.elements["longitude"].value);
+
+        if (isNaN(lat) || isNaN(lng)) {
+            document.getElementById("latitude").classList.add("is-invalid");
+            document.getElementById("longitude").classList.add("is-invalid");
+            valid = false;
+        }
+
+        const type = form.elements["propertyType"].value;
+        if (!type) {
+            document.getElementById("propertyType").classList.add("is-invalid");
+            valid = false;
+        }
+
         if (!valid) {
             e.preventDefault();
         } else {
