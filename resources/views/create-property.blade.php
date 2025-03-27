@@ -56,10 +56,12 @@
       <div class="col-md-6 mb-3">
         <label for="latitude" class="form-label">Latitude</label>
         <input type="number" step="any" class="form-control" name="latitude" id="latitude">
+        <div class="invalid-feedback" id="error-latitude"></div>
       </div>
       <div class="col-md-6 mb-3">
         <label for="longitude" class="form-label">Longitude</label>
         <input type="number" step="any" class="form-control" name="longitude" id="longitude">
+        <div class="invalid-feedback" id="error-longitude"></div>
       </div>
     </div>
 
@@ -73,6 +75,7 @@
         <option value="Cottage">Cottage</option>
         <option value="Multiplex">Multiplex</option>
       </select>
+      <div class="invalid-feedback" id="error-propertyType"></div>
     </div>
 
     <div class="row">
@@ -109,10 +112,10 @@
       <label for="image" class="form-label">Upload Property Images</label>
       <input type="file" class="form-control" name="images[]" accept="image/*" multiple>
     </div>
-    <!-- 
-    <input type="hidden" name="ownerId" value="1">
-    <input type="hidden" name="agentId" value="2">
-    <input type="hidden" name="isSold" value="0"> -->
+
+    <!-- <input type="hidden" name="ownerId" value="1">
+    <input type="hidden" name="agentId" value="2"> -->
+    <input type="hidden" name="isSold" value="0">
 
     <button type="submit" class="btn btn-success">Add Property</button>
 

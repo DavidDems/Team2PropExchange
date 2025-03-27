@@ -5,6 +5,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("propertyForm");
 
     form.addEventListener("submit", function (e) {
+        // Reset error fields
+        const errorFields = [
+            "title",
+            "price",
+            "postalCode",
+            "latitude",
+            "longitude",
+            "propertyType",
+        ];
+        errorFields.forEach((field) => {
+            document.getElementById(field).classList.remove("is-invalid");
+            const errorDiv = document.getElementById(`error-${field}`);
+            if (errorDiv) errorDiv.innerText = "";
+        });
+
         const title = form.elements["title"].value.trim();
         const price = parseFloat(form.elements["price"].value);
         const postalCode = form.elements["postalCode"].value.trim();
@@ -37,15 +52,25 @@ document.addEventListener("DOMContentLoaded", function () {
         const lat = parseFloat(form.elements["latitude"].value);
         const lng = parseFloat(form.elements["longitude"].value);
 
-        if (isNaN(lat) || isNaN(lng)) {
+        if (isNaN(lat)) {
             document.getElementById("latitude").classList.add("is-invalid");
+            document.getElementById("error-latitude").innerText =
+                "Latitude is required";
+            valid = false;
+        }
+
+        if (isNaN(lng)) {
             document.getElementById("longitude").classList.add("is-invalid");
+            document.getElementById("error-longitude").innerText =
+                "Longitude is required";
             valid = false;
         }
 
         const type = form.elements["propertyType"].value;
         if (!type) {
             document.getElementById("propertyType").classList.add("is-invalid");
+            document.getElementById("error-propertyType").innerText =
+                "Please select a property type.";
             valid = false;
         }
 
