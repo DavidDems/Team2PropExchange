@@ -69,7 +69,7 @@
     </div>
   </form>
 
-  <!-- View Map Button -->
+  <!-- View Map -->
   <div class="text-end mt-2">
     <a href="{{ route('map-properties') }}" class="btn btn-outline-primary">
       <i class="bi bi-map"></i> View Map
@@ -85,26 +85,26 @@
     @foreach($properties as $property)
     <div class="col-md-4 mb-4">
       <div class="card h-100 bg-light p-4 rounded shadow">
-          @if($property->images->first())
-              <img src="{{ asset('storage/' . $property->images->first()->imagePath) }}" class="card-img-top" alt="{{ $property->title }}">
-          @else
-            <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
-              No Image Available
-            </div>
-          @endif
-            <div class="card-body">
-                <h5 class="card-title">{{ $property->title }}</h5>
-                <p class="card-text"><strong>Price:</strong> ${{ number_format($property->price) }}</p>
-                <p class="card-text"><strong>Address:</strong> {{ $property->address }}, {{ $property->city }}, {{ $property->province }}</p>
-                <p class="card-text"><strong>Type:</strong> {{ $property->propertyType }}</p>
-                <div class="d-flex justify-content-between">
-                    <span><strong>Beds:</strong> {{ $property->bedrooms }}</span>
-                    <span><strong>Baths:</strong> {{ $property->bathrooms }}</span>
-                    <span><strong>Sqft:</strong> {{ $property->squareFootage }}</span>
-                </div>
-                <a href="{{ route('properties.show', $property->propertyId) }}" class="btn btn-primary mt-3">View Property</a>
-            </div>
+        @if($property->images->first())
+        <img src="{{ asset('storage/' . $property->images->first()->imagePath) }}" class="card-img-top" alt="{{ $property->title }}">
+        @else
+        <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+          No Image Available
         </div>
+        @endif
+        <div class="card-body">
+          <h5 class="card-title">{{ $property->title }}</h5>
+          <p class="card-text"><strong>Price:</strong> ${{ number_format($property->price) }}</p>
+          <p class="card-text"><strong>Address:</strong> {{ $property->address }}, {{ $property->city }}, {{ $property->province }}</p>
+          <p class="card-text"><strong>Type:</strong> {{ $property->propertyType }}</p>
+          <div class="d-flex justify-content-between">
+            <span><strong>Beds:</strong> {{ $property->bedrooms }}</span>
+            <span><strong>Baths:</strong> {{ $property->bathrooms }}</span>
+            <span><strong>Sqft:</strong> {{ $property->squareFootage }}</span>
+          </div>
+          <a href="{{ route('properties.show', $property->propertyId) }}" class="btn btn-primary mt-3">View Property</a>
+        </div>
+      </div>
     </div>
     @endforeach
   </div>
